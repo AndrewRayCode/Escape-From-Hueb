@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<levels>
+	<!-- OPTIONAL: Defining an empty level '0' starts the tutorial, and triggers tutorial messages for levels 1 and 2 -->
+	<level index="0" />
+	
+	<!-- Levels must be indexed numerically, always starting from 1 -->
+
+	<!-- Drunken man shouting level -->
+	<level index="1">
+		<sound name="password" x="random" y="random" looping="true" file="level1_password.mp3" autoplay="true" radius="15.0"/>
+		<password>alpha</password>
+		<teleporter name="teleporter" x="random" y="random" file="teleporter_loop.mp3" radius="40.0"/>
+	</level>
+
+	<!-- Radio level -->
+	<level index="2">
+		<sound name="radio" file="level2_clue.mp3" x="82" y="40" radius="15.0" onclick="start click, stop radio, stop woman, start thank_you, start teleporter" looping="true" autoplay="true" />
+		<sound name="woman" file="turn_off_radio.mp3" x="20" y="50" radius="40.0"  looping="true" autoplay="true" />
+		<sound name="click" file="click.mp3" position="center" />
+		<sound name="thank_you" file="thank_you.mp3" position="center" />
+		<teleporter name="teleporter" x="60" y="70" file="teleporter_loop.mp3" radius="20.0" />
+	</level>
+	
+	<!-- Music looping level -->
+	<level index="3">
+		<sound name="music_1" file="music_level_1.mp3" x="26" y="80" radius="25.0" looping="true" autoplay="true" />
+		<sound name="music_2" file="music_level_2.mp3" x="42" y="55" radius="25.0" looping="true" autoplay="true" />
+		<sound name="music_3" file="music_level_3.mp3" x="52" y="60" radius="25.0" looping="true" autoplay="true" />
+		<sound name="music_4" file="music_level_4.mp3" x="70" y="75" radius="25.0" looping="true" autoplay="true" />
+		<password>noise</password>
+		<teleporter name="teleporter" x="30" y="30" file="teleporter_loop.mp3" radius="20.0" />
+	</level>
+	
+	<!-- Button is half way level -->
+	<level index="4">
+		<sound name="button_him" file="button_him.mp3" x="30" y="30" radius="30.0" looping="true" autoplay="true" />
+		<sound name="button_her" file="button_her.mp3" x="70" y="30" radius="30.0" looping="true" autoplay="true" />
+		<sound name="button" file="silence.mp3" x="50" y="30" radius="50.0" looping="true" autoplay="true" onclick="stop button_him, stop button_her, start click, start pressed_it, start teleporter 6000" />
+		<sound name="click" file="click.mp3" position="center" />
+		<sound name="pressed_it" file="pressed_it.mp3" position="center" />
+		<teleporter name="teleporter" x="random" y="random" file="teleporter_loop.mp3" radius="20.0" />
+	</level>
+	
+	<!-- Swat the bee level -->
+	<level index="5">
+		<sound name="oh_no_a_bee" file="oh_no_a_bee.mp3" x="50" y="50" radius="30.0" looping="true" autoplay="true" />
+		<sound name="bee" file="bee_loop.mp3" x="random" y="random" radius="17.0" motion="random" onclick="start squash, stop bee, start teleporter, stop oh_no_a_bee, start bee_thanks" looping="true" autoplay="true" />
+		<sound name="squash" file="squash.mp3" position="center" />
+		<sound name="bee_thanks" file="bee_thanks.mp3" position="center"/>
+		<teleporter name="teleporter" x="random" y="random" file="teleporter_loop.mp3" radius="20.0" />
+	</level>
+	
+	<!-- Fur Elise Level -->
+	<level index="6">
+		<sound name="elise_1" x="73" y="25" looping="true" file="elise_1.mp3" autoplay="true" radius="15.0"/>
+		<sound name="elise_2" x="25" y="64" looping="true" file="elise_2.mp3" autoplay="true" radius="15.0"/>
+		<sound name="elise_3" x="23" y="16" looping="true" file="elise_3.mp3" autoplay="true" radius="15.0"/>
+		<sound name="elise_4" x="78" y="80" looping="true" file="elise_4.mp3" autoplay="true" radius="15.0"/>
+		<password>gain</password>
+		<teleporter name="teleporter" x="random" y="random" file="teleporter_loop.mp3" radius="40.0"/>
+	</level>
+	
+	<!-- Run both machines at once -->
+	<level index="7">
+		<sound name="beep_loop1" file="beep_loop.mp3" x="25" y="29" radius="30.0" looping="true" autoplay="true" onclick="start machine_1, start click"/>
+		<sound name="beep_loop2" file="beep_loop_2.mp3" x="68" y="75" radius="30.0" looping="true" autoplay="true" onclick="start machine_2, start click"/>
+		<sound name="machine_1" file="machine.mp3" x="25" y="29" radius="30.0" />
+		<sound name="machine_2" file="machine.mp3" x="68" y="75" radius="30.0" />
+		<sound name="click" file="click.mp3" position="center" />
+		<sound name="running_machines" file="running_machines.mp3" position="center" />
+		<trigger condition="machine_1 isActive, machine_2 isActive" action="stop beep_loop1, stop beep_loop2, stop machine_1, stop machine_2, start running_machines, start teleporter 4000" />
+		<teleporter name="teleporter" x="random" y="random" file="teleporter_loop.mp3" radius="20.0" />
+	</level>
+</levels>
